@@ -39,6 +39,5 @@ export default class Cell {
     this.r = Math.floor(this.r * (1 - ratio) + r * ratio);
     this.g = Math.floor(this.g * (1 - ratio) + g * ratio);
     this.b = Math.floor(this.b * (1 - ratio) + b * ratio);
-    console.log(this.r);
   }
 }

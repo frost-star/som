@@ -1,12 +1,26 @@
 <template lang="html">
-  <table>
-    <tr v-for="line in cells">
-      <td v-for="cell in line">
-        <div class="cell" v-bind:style="cell.getStyle()">
-        </div>
-      </td>
-    </tr>
-  </table>
+  <div>
+    <div>
+      w:
+      <input type="text" v-model="width"></button>
+      h:
+      <input type="text" v-model="height"></button>
+      <button v-on:click="init()">init</button>
+    </div>
+    <div>
+      step:
+      <input type="text" v-model="count"></button>
+      <button v-on:click="execute()">execute</button>
+    </div>
+    <table>
+      <tr v-for="line in cells">
+        <td v-for="cell in line">
+          <div class="cell" v-bind:style="cell.getStyle()">
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -15,28 +29,27 @@ import Cell from '@/model/Cell';
 export default {
   data () {
     return {
-      width: 0,
-      height: 0,
+      width: 10,
+      height: 10,
+      count: 1000,
       cells: []
     };
   },
   created () {
-    this.init(10, 10);
+    this.init();
   },
   methods: {
-    init: function (width, height) {
-      this.width = width;
-      this.height = height;
+    init: function () {
+      this.cells = [];
       for (let y = 0; y < this.height; y++) {
-        this.cells[y] = [];
+        this.cells.push([]);
         for (let x = 0; x < this.width; x++) {
-          this.cells[y][x] = new Cell();
+          this.cells[y].push(new Cell());
         }
       }
-      this.execute(1000);
     },
-    execute: function (count) {
-      for (let i = 0; i < count; i++) {
+    execute: function () {
+      for (let i = 0; i < this.count; i++) {
         let r = Math.floor(Math.random() * 255);
         let g = Math.floor(Math.random() * 255);
         let b = Math.floor(Math.random() * 255);
