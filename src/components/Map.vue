@@ -61,11 +61,11 @@ export default {
       let bmu = {
         x: 0,
         y: 0,
-        distance: this.cells[0][0].caclColorDistance(r, g, b)
+        distance: this.cells[0][0].calcColorDistance(r, g, b)
       };
       for (let y = 0; y < this.height; y++) {
         for (let x = 0; x < this.width; x++) {
-          let distance = this.cells[y][x].caclColorDistance(r, g, b);
+          let distance = this.cells[y][x].calcColorDistance(r, g, b);
           if (distance < bmu.distance) {
             bmu.x = x;
             bmu.y = y;

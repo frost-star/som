@@ -21,7 +21,7 @@ export default class Cell {
    * @param  Number b blue
    * @return Number   色距離
    */
-  caclColorDistance (r, g, b) {
+  calcColorDistance (r, g, b) {
     return Math.pow((this.r - r), 2) +
            Math.pow((this.g - g), 2) +
            Math.pow((this.b - b), 2);
